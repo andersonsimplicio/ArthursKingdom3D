@@ -113,3 +113,73 @@ Anderson José Simplício
 GitHub: @andersonsimplicio
 
 ⭐ Se você gostou do projeto, considere deixar uma estrela no repositório!
+
+
+🚀 Como baixar e executar o projeto
+📋 Requisitos
+
+Antes de baixar o projeto, instale:
+
+Unity Hub
+
+Git
+
+Git LFS
+
+Importante: utilize a mesma versão da Unity utilizada no desenvolvimento do projeto. A versão pode ser encontrada no arquivo ProjectSettings/ProjectVersion.txt.
+
+Entre na pasta do projeto:
+
+cd SEU-REPOSITORIO
+
+📦 1. Configurar o Git LFS
+
+Execute:
+
+git lfs install
+
+
+Depois baixe os arquivos grandes armazenados pelo Git LFS:
+
+git lfs pull
+
+
+O Git LFS é utilizado neste projeto para armazenar assets grandes, como texturas .psd e .tga.
+
+🎮 2. Abrir o projeto no Unity
+
+Abra o Unity Hub.
+
+Clique em Add / Adicionar.
+
+Selecione a pasta onde o projeto foi clonado.
+
+Abra o projeto utilizando a versão correta da Unity.
+
+Aguarde o Unity importar os assets. Na primeira abertura isso pode levar alguns minutos.
+
+▶️ 3. Executar o jogo
+
+Depois que o projeto terminar de importar:
+
+Abra a cena principal em Assets/Scenes/.
+
+Clique no botão Play no Unity.
+
+Utilize os controles descritos na seção Controles deste README.
+
+⚠️ Problemas comuns
+Os modelos ou texturas aparecem faltando
+
+Verifique se o Git LFS está instalado:
+
+git lfs version
+
+Depois execute:
+git lfs pull
+O Unity informa que a versão do projeto é diferente
+Verifique a versão em:
+ProjectSettings/ProjectVersion.txt
+Utilize essa mesma versão pelo Unity Hub sempre que possível.
+O projeto demora para abrir pela primeira vez
+Isso é normal. O Unity precisa importar e processar os assets do projeto. O tempo depende do tamanho do projeto e do computador.
