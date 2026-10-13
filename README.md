@@ -183,3 +183,50 @@ ProjectSettings/ProjectVersion.txt
 Utilize essa mesma versão pelo Unity Hub sempre que possível.
 O projeto demora para abrir pela primeira vez
 Isso é normal. O Unity precisa importar e processar os assets do projeto. O tempo depende do tamanho do projeto e do computador.
+
+
+# Configurando git na máquina local
+
+### Abrir o PowerShell ou Git Bash
+
+### Crie o diretório .ssh caso ele ainda não exista executando o comando:
+## PowerShell
+```bash
+New-Item -ItemType Directory -Force -Path "$HOME\.ssh"
+```
+### ou No Git Bash, o equivalente é:
+```bash
+mkdir -p ~/.ssh
+```
+### Editar ou criar o arquivo config
+<p>
+O arquivo de configuração deve ficar exatamente no caminho:
+C:\Users\<SeuUsuario>\.ssh\config (sem nenhuma extensão como .txt).
+Você pode abri-lo diretamente com o Bloco de Notas: 
+</p>
+```bash
+notepad "$HOME\.ssh\config"
+```
+#### Se o Windows perguntar se deseja criar o arquivo, clique em Sim.
+#### Adicione o seguinte bloco de configuração dentro do arquivo:
+```text
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+```
+#### Salve (Ctrl + S) e feche o Bloco de Notas.
+#### Testar a conexão
+ ```Text
+ssh -T -p 443 git@ssh.github.com
+```
+## Usando repositórios
+#### Com isso pronto, você não precisa alterar nada nas URLs dos clones. Pode clonar normalmente usando a URL SSH padrão do repositório:
+```Text
+git clone git@github.com:andersonsimplicio/ArthursKingdom3D.git
+```
+#### O cliente SSH do Windows interceptará qualquer chamada para github.com e a encaminhará de forma transparente para ssh.github.com na porta 443.
+
+
+
+
