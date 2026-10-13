@@ -204,6 +204,7 @@ O arquivo de configuração deve ficar exatamente no caminho:
 C:\Users\<SeuUsuario>\.ssh\config (sem nenhuma extensão como .txt).
 Você pode abri-lo diretamente com o Bloco de Notas: 
 </p>
+ 
 ```bash
 notepad "$HOME\.ssh\config"
 ```
