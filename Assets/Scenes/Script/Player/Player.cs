@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] bool isAttack;
     [SerializeField] private float attackCoolDown = 0.53f;
+     [SerializeField] private ParticleSystem slashFx;
     const float timeAttack1 =  0.53f;
     private static readonly int speedHash = Animator.StringToHash("Speed");
     private static readonly int attackHash = Animator.StringToHash("Attack");
@@ -67,6 +68,7 @@ public class Player : MonoBehaviour
             animator.SetTrigger(attackHash);
             isAttack=true;
             attackCoolDown = timeAttack1;
+            slashFx.Play();
         }
     }
     private void UpdateAttackState()
