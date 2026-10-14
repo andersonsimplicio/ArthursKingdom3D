@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] bool isAttack;
     [SerializeField] private float attackCoolDown = 0.53f;
-     [SerializeField] private ParticleSystem slashFx;
+    [SerializeField] private ParticleSystem slashFx;
+
+    public static Player Instance;
     const float timeAttack1 =  0.53f;
     private static readonly int speedHash = Animator.StringToHash("Speed");
     private static readonly int attackHash = Animator.StringToHash("Attack");
@@ -26,6 +28,11 @@ public class Player : MonoBehaviour
         movimentSpeed = 3.0f;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Awake()
+    {
+        Instance = this;
     }
 
     // Update is called once per frame
