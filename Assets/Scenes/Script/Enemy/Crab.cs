@@ -27,7 +27,7 @@ public class Crab : Enemy
 
     private void RotationTowarsPlayer()
     {
-        Vector3 direction =( Player.Instance.transform.position - transform.position).normalized;
+        Vector3 direction =(Player.Instance.transform.position - transform.position).normalized;
         direction.y = 0f;
         if(direction != Vector3.zero)
         {

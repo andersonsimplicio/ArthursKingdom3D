@@ -9,11 +9,11 @@ public class Enemy : MonoBehaviour
     {
         
     }
-     public void OnHit()
+    public void OnHit()
     {
-        
+        Debug.Log("Acertou !!!!");
     }
-       public void OnDead()
+   public void OnDead()
     {
         
     }
