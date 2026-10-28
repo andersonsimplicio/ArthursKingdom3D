@@ -7,6 +7,7 @@ public class Crab : Enemy
  [SerializeField] float detectionRadius = 1f;
  [SerializeField] float rotationSpeed = 1f;
 
+
     private void Update()
     {
         if (isPlayerVisible == false)

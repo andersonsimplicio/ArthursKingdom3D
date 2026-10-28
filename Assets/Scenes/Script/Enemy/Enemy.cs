@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
      [SerializeField] GameObject hitFx;
      [SerializeField] private Vector3 alturaHit;
      [SerializeField] private Animator animator;
+     [SerializeField] Renderer enemyRenderer;
      private static readonly int attackHit = Animator.StringToHash("Hit");
 
    public void Start()
@@ -14,8 +16,7 @@ public class Enemy : MonoBehaviour
       alturaHit = new Vector3(0,1f,0);
    }  
 
-       public void Move()
-    {
+  public void Move(){
         
     }
     public void OnHit()
@@ -27,5 +28,16 @@ public class Enemy : MonoBehaviour
    public void OnDead()
     {
         
+    }
+
+    IEnumerator HitFlash(){
+      
+        enemyRenderer.material.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        enemyRenderer.material.color = Color.white;
+        yield return new WaitForSeconds(0.2f);
+        enemyRenderer.material.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        enemyRenderer.material.color = Color.white;
     }
 }
