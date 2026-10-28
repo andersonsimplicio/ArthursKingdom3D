@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] bool isAttack;
     [SerializeField] private float attackCoolDown = 0.53f;
     [SerializeField] private ParticleSystem slashFx;
+    [SerializeField] CinemachineImpulseSource impulseSource;
 
     public static Player Instance;
     const float timeAttack1 =  0.53f;
@@ -122,5 +124,10 @@ public class Player : MonoBehaviour
                     inputDirection.y=-2f;
                     isJump=false;
                 }
+        }
+
+        public void ShakeCamera()
+        {
+            impulseSource.GenerateImpulse();
         }
     } 

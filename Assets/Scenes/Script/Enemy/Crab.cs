@@ -6,7 +6,8 @@ public class Crab : Enemy
  [SerializeField] bool isPlayerVisible;
  [SerializeField] float detectionRadius = 1f;
  [SerializeField] float rotationSpeed = 1f;
-
+ [SerializeField] GameObject AlertCanva;
+ [SerializeField] float alertZOffSet = -0f;
 
     private void Update()
     {
@@ -17,6 +18,10 @@ public class Crab : Enemy
             {
                 isPlayerVisible = true;
                 Debug.Log("Viu o Jogador");
+    
+                GameObject alert = Instantiate(AlertCanva,transform.position + new Vector3(-2f,1f,-2f),transform.rotation);
+                alert.transform.forward = Camera.main.transform.forward;
+                Destroy(alert,2f);
             }
         }
         else{

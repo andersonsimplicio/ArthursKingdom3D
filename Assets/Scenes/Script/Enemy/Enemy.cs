@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     {
       animator.SetTrigger(attackHit);
       GameObject hitEffect = Instantiate(hitFx,transform.position + alturaHit ,transform.rotation);
+      Player.Instance.ShakeCamera();
+
       Destroy(hitEffect,1f);
     }
    public void OnDead()
