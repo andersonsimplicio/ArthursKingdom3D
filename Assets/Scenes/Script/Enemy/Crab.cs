@@ -25,7 +25,6 @@ public class Crab : Enemy
             }
         }
         else{
-            
             RotationTowarsPlayer();
         }
        

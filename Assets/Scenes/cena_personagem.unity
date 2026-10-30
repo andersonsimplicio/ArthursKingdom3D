@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb12f85c2201aa4e82e99a68e4130fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crab
-  life: 0
+  life: 100
   damage: 0
   hitFx: {fileID: 314967726407950750, guid: 07dfde683c2830a42b6ae8b0287367e7, type: 3}
   alturaHit: {x: 0, y: 1, z: 0}

@@ -16,20 +16,32 @@ public class Enemy : MonoBehaviour
       alturaHit = new Vector3(0,1f,0);
    }  
 
-  public void Move(){
+    public void Move(){
         
     }
     public void OnHit()
     {
+
+    life-=25;  
+
+    if (life < 25)
+    {
+       Death();
+    }
+
       animator.SetTrigger(attackHit);
       GameObject hitEffect = Instantiate(hitFx,transform.position + alturaHit ,transform.rotation);
       Player.Instance.ShakeCamera();
 
       Destroy(hitEffect,1f);
     }
-   public void OnDead()
+    public void OnDead()
     {
         
+    }
+    public void Death()
+    {
+    
     }
 
     IEnumerator HitFlash(){
