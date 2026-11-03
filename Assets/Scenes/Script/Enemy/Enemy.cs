@@ -7,9 +7,12 @@ public class Enemy : MonoBehaviour
      [SerializeField] float damage;
      [SerializeField] GameObject hitFx;
      [SerializeField] private Vector3 alturaHit;
-     [SerializeField] private Animator animator;
+     [SerializeField] protected Animator animator;
      [SerializeField] Renderer enemyRenderer;
+     [SerializeField] protected Collider collider;
+     [SerializeField] protected Rigidbody rigidbody;
      private static readonly int attackHit = Animator.StringToHash("Hit");
+     
 
    public void Start()
    {
@@ -19,30 +22,34 @@ public class Enemy : MonoBehaviour
     public void Move(){
         
     }
-    public void OnHit()
+    public void OnHit(int damage)
     {
 
-    life-=25;  
+         life-=damage;  
 
-    if (life < 25)
-    {
-       Death();
-    }
+         if (life < 25)
+         {
+            Death();
+         }
 
-      animator.SetTrigger(attackHit);
-      GameObject hitEffect = Instantiate(hitFx,transform.position + alturaHit ,transform.rotation);
-      Player.Instance.ShakeCamera();
+            animator.SetTrigger(attackHit);
+            GameObject hitEffect = Instantiate(hitFx,transform.position + alturaHit ,transform.rotation);
+            Player.Instance.ShakeCamera();
 
-      Destroy(hitEffect,1f);
+            Destroy(hitEffect,1f);
     }
     public void OnDead()
     {
         
     }
-    public void Death()
+    public virtual void Death()
     {
-    
+       
     }
+    public virtual void Attack(){
+        
+    }
+
 
     IEnumerator HitFlash(){
       
