@@ -398,6 +398,9 @@ PrefabInstance:
       addedObject: {fileID: 377907615}
     - targetCorrespondingSourceObject: {fileID: 8001354749718593143, guid: b419e164ab53516438da636332342da9, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 377907620}
+    - targetCorrespondingSourceObject: {fileID: 8001354749718593143, guid: b419e164ab53516438da636332342da9, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 377907614}
     - targetCorrespondingSourceObject: {fileID: 8001354749718593143, guid: b419e164ab53516438da636332342da9, type: 3}
       insertIndex: -1
@@ -525,6 +528,19 @@ MonoBehaviour:
     DissipationDistance: 100
     PropagationSpeed: 343
   DefaultVelocity: {x: 0, y: -0.2, z: 0}
+--- !u!114 &377907620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377907611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a71fba4866db84db089c78af482023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  life: 100
 --- !u!1 &478646792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6928589415477905156, guid: c1f65bc2f90a43c4959826b943b130cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000033153327
+      value: -0.017
       objectReference: {fileID: 0}
     - target: {fileID: 6928589415477905156, guid: c1f65bc2f90a43c4959826b943b130cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1091,7 +1107,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6928589415477905210, guid: c1f65bc2f90a43c4959826b943b130cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1106559568}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6928589415477418788, guid: c1f65bc2f90a43c4959826b943b130cf, type: 3}
       insertIndex: -1
@@ -1121,7 +1140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   life: 100
-  damage: 15
+  damage: 20
   hitFx: {fileID: 314967726407950750, guid: 07dfde683c2830a42b6ae8b0287367e7, type: 3}
   alturaHit: {x: 0, y: 1, z: 0}
   animator: {fileID: 1106010732}
@@ -1130,13 +1149,14 @@ MonoBehaviour:
   rigidbody: {fileID: 1106010734}
   isPlayerVisible: 0
   detectionRadius: 4
-  attackRange: 1.5
+  attackRange: 2
   attackCoolDown: 2
   lastAttackTime: 0
   rotationSpeed: 10
   AlertCanva: {fileID: 4694808165744327094, guid: 3f03ce07fcf317641b208f587fa246fb, type: 3}
   alertZOffSet: 0
   distance: 0
+  clawHitBox: {fileID: 1106559570}
 --- !u!136 &1106010731
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1190,8 +1210,76 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!1 &1106559567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106559568}
+  - component: {fileID: 1106559569}
+  - component: {fileID: 1106559570}
+  m_Layer: 0
+  m_Name: ClawHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106559568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106559567}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.788, y: -0.059, z: -0.009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1976205272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1106559569
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106559567}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.32
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1106559570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106559567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015cc5a4ab0962444929b8d97478f382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageHitBox
+  damage: 15
+  enemyLayer: 8
 --- !u!1 &1685638865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1644,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ef8d476ac4025a4e85cc5e7c5004889, type: 3}
+--- !u!4 &1976205272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6928589415477905210, guid: c1f65bc2f90a43c4959826b943b130cf, type: 3}
+  m_PrefabInstance: {fileID: 1076464673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

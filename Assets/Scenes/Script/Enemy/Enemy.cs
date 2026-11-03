@@ -4,7 +4,7 @@ using System.Collections;
 public class Enemy : MonoBehaviour
 {
      [SerializeField] int life;
-     [SerializeField] float damage;
+     [SerializeField] protected int damage;
      [SerializeField] GameObject hitFx;
      [SerializeField] private Vector3 alturaHit;
      [SerializeField] protected Animator animator;

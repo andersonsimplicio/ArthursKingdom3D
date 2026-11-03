@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Crab : Enemy
@@ -12,10 +13,17 @@ public class Crab : Enemy
  [SerializeField] GameObject AlertCanva;
  [SerializeField] float alertZOffSet = -0f;
 [SerializeField] float distance;
+[SerializeField] EnemyDamageHitBox clawHitBox;//Classe que representa a garra para o ataque.
  private static readonly int dieHash = Animator.StringToHash("Die");
  private static readonly int attackHash = Animator.StringToHash("Attack");
 
- 
+
+    void Start()
+    {
+        clawHitBox.Damage = damage;
+    }
+
+  
     private void Update(){
 
         distance = Vector3.Distance(transform.position,Player.Instance.transform.position);
