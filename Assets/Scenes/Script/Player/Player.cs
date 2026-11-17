@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem slashFx;
     [SerializeField] CinemachineImpulseSource impulseSource;
 
+
+    public Animator Animator {get => animator; set => animator = value;}
+
     public static Player Instance;
     const float timeAttack1 =  0.53f;
     private static readonly int speedHash = Animator.StringToHash("Speed");
@@ -37,13 +40,15 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame - Ele é chamado a cada segundo. (Frame)
     void Update()
     {
        Move();
        Attack();
        UpdateAttackState(); 
     }
+
+
 
     public float _movimentSpeed
     {
