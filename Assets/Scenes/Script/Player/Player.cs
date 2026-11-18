@@ -16,6 +16,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float attackCoolDown = 0.53f;
     [SerializeField] private ParticleSystem slashFx;
     [SerializeField] CinemachineImpulseSource impulseSource;
+    public bool isPause;
+    [SerializeField] PlayerHealth playerHealth;
+
+
+
+    public PlayerHealth _playerHeath
+    {
+        get{ return playerHealth; }
+        set{ playerHealth = value; }
+    }
 
 
     public Animator Animator {get => animator; set => animator = value;}
@@ -43,9 +53,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame - Ele é chamado a cada segundo. (Frame)
     void Update()
     {
-       Move();
-       Attack();
-       UpdateAttackState(); 
+        if (isPause == false)
+        {
+           Move();
+           Attack();
+           UpdateAttackState();
+        }  
     }
 
 

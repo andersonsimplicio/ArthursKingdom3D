@@ -27,7 +27,7 @@ public void Evaluate(float distanceToPlayer, float currentTime){
         }
         return;
     }   
-    if(distanceToPlayer <= attackRange && (currentTime - lastAttackTime) >= attackCoolDown){
+    if(distanceToPlayer <= attackRange && (currentTime - lastAttackTime) >= attackCoolDown && !Player.Instance._playerHeath.IsDead){
             lastAttackTime = currentTime;
             OnAttackTriggered?.Invoke();
     }     
