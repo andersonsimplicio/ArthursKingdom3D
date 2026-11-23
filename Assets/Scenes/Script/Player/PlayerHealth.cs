@@ -1,10 +1,13 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
    [SerializeField] int life = 100;
    [SerializeField] Player player;
    [SerializeField] bool isDead;
+   [SerializeField] GameObject gameOverPanel;
 
 
    public bool IsDead
@@ -34,9 +37,18 @@ public class PlayerHealth : MonoBehaviour
         }
 
    }
+   public void RestartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);        
+   } 
    void Death(){
          player.Animator.SetTrigger(dieHash);
          player.isPause = true;
          player._playerHeath.isDead = true;
+         StartCoroutine(DelayeGameOver());
+    }
+    IEnumerator DelayeGameOver()
+    {
+        yield return new WaitForSeconds(1.0f);
+        gameOverPanel.SetActive(true);
     }
 }

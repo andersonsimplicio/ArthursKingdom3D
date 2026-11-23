@@ -1,23 +1,23 @@
-using System;
-using Unity.Cinemachine;
-using UnityEngine;
-using UnityEngine.InputSystem;
+    using System;
+    using Unity.Cinemachine;
+    using UnityEngine;
+    using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
-{
-    [SerializeField] float movimentSpeed;
-    [SerializeField] float rotationSpeed = 10f;
-    [SerializeField] float gravity=-9.8f;
-    [SerializeField] float jump=1.2f;
-    [SerializeField] bool isJump;
-    [SerializeField] CharacterController controller;
-    [SerializeField] Animator animator;
-    [SerializeField] bool isAttack;
-    [SerializeField] private float attackCoolDown = 0.53f;
-    [SerializeField] private ParticleSystem slashFx;
-    [SerializeField] CinemachineImpulseSource impulseSource;
-    public bool isPause;
-    [SerializeField] PlayerHealth playerHealth;
+    public class Player : MonoBehaviour
+    {
+        [SerializeField] float movimentSpeed;
+        [SerializeField] float rotationSpeed = 10f;
+        [SerializeField] float gravity=-9.8f;
+        [SerializeField] float jump=1.2f;
+        [SerializeField] bool isJump;
+        [SerializeField] CharacterController controller;
+        [SerializeField] Animator animator;
+        [SerializeField] bool isAttack;
+        [SerializeField] private float attackCoolDown = 0.53f;
+        [SerializeField] private ParticleSystem slashFx;
+        [SerializeField] CinemachineImpulseSource impulseSource;
+        public bool isPause;
+        [SerializeField] PlayerHealth playerHealth;
 
 
 
@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
         movimentSpeed = 3.0f;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        isPause = false;
     }
 
     private void Awake()
@@ -53,15 +54,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame - Ele é chamado a cada segundo. (Frame)
     void Update()
     {
-        if (isPause == false)
+        if (isPause)
         {
+            if(animator!=null) animator.SetFloat(speedHash,0f);
+            return;
+        }
            Move();
            Attack();
            UpdateAttackState();
-        }  
     }
-
-
 
     public float _movimentSpeed
     {
@@ -86,7 +87,13 @@ public class Player : MonoBehaviour
                 controller.Move(inputDirection * movimentSpeed * Time.deltaTime);
             }
         }
-        animator.SetFloat(speedHash,inputDirection.magnitude);
+        if(animator!=null){
+            animator.SetFloat(speedHash,inputDirection.magnitude);
+        }
+        else
+        {
+            return;
+        }
     }
     private void Attack()
     {
